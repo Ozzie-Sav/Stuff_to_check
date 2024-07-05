@@ -1,0 +1,26 @@
+FeatsList["nchef"] = {
+	name : "Nythorian Chef",
+	source : ["Nythoria", 1],
+	description : desc([
+		"Increase Con 1, up to max of 20. Gain proficiency with cook's utensils.", 
+		"Gain additional options to prepare food during short and long rests (See Note)."
+	]),
+	toNotesPage : [{
+				name : "Chef's Menu Options",
+				source : ["Nythoria"],
+				popupName : "Chef's Menu",
+				note : [
+				    "\n I can prepare meals and treats using appropriate ingredients and my Cook's Utensils as part of Short and Long Rests as follows:",
+					" - Short rest, I may prepare 4+ proficiency bonus number of meals. Creatures who expend hit dice to heal may also eat the meals to gain an extra 1d8 hp.",
+					" - Long rest, I may utilize 1 hour to prepare a number of treats equal to my proficiency bonus.",
+					" -- Basic meals, which involve one or more things like biscuits, boiled vegetables, normal meat grilled or fried meat over a fire - basic foodstuffs usually carried by adventurers - will have a DC 15 Cooking Check (A d20 roll, adding cooking utensils skill check) for success or failure. For all who partake of this meal, they will receive 1d6 + CON mod temporary hit points.  A failure on the Cooking Check roll will bestow half the number of temporary hit points, rounded down.",
+					" -- Exotic meals, which involve luxury food items such as roasted fish with pine nuts and grilled vegetables, with complimenting herbs and spices, will have a DC 20 Cooking Check. A successful roll will grant 1d8 + CON mod temporary hit points and the effects of the bless spell. A failure Cooking Check roll will only grant half the hit points and no bless.",
+					" -- Arcane meals, which involve ingredients harvested from magical animals or plants (which have magical abilities or defenses), will have a DC 25 Cooking Check.  Eating one of these meals will grant 1d12 + CON mod temporary hit points, bless, and a positive and negative effect from the magical creature. A failure on the check will grant half the hit points and the negative magical effect.",
+					" -- Any temporary hitpoints, and magical effects from a magical animal, only last 8 hours."
+				],
+	}],
+	scores : [0,0,1,0,0,0],
+	calculate : "event.value = \"During a short rest, I can cook up to (\" 4 + What(\"fields.Proficiency\") meals, providing 1d8 extra hp. During a long rest, I can spend 1hr cooking to produce (\"What(\"fields.Proficiency\") treats that provide 'See Notes' when consumed with a bonus action.\"",
+	toolProfs : [["Cook's Utensils", "Con"]], //{?} changes from 12.999 to 13.x where second entry provides # of tools, not ability score of tool use
+	skills : [["Cook's Utensils", "increment"]]
+};
